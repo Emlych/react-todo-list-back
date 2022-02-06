@@ -2,9 +2,10 @@ const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 //connect to database
-mongoose.connect("mongodb://localhost/todolistv2");
+// mongoose.connect(process.env.MONGODB_URI);
 
 // create server
 const app = express();
@@ -39,6 +40,6 @@ app.all("*", (req, res) => {
 });
 
 //Launch server
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server has started.");
 });
